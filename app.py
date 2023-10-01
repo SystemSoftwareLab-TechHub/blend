@@ -1,5 +1,3 @@
-from io import BytesIO
-from PIL import Image
 import qrcode
 import logging
 from flask import Flask, render_template, request
