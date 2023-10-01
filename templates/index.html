@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="wrap">
-    <form method="post" enctype="multipart/form-data">
+    <form action="/blend" method="post" enctype="multipart/form-data">
         <div class="input-img-area">
             <div class="show-input-img">
                 <div class="show-first-img">
@@ -41,7 +41,7 @@
 
                             </label>
                         </div>
-                        <input type="file" id="image2" name="chooseFile" accept="image/jpeg"
+                        <input type="file" id="image2" name="image2" accept="image/jpeg"
                                onchange="previewImg2(this);">
                     </div>
                     <div class="second-img-webcam-bt">
@@ -50,7 +50,9 @@
                 </div>
             </div>
         </div>
+        <input type="submit" value="Merge Images">
     </form>
 </div>
+
 </body>
 </html>
