@@ -1,0 +1,92 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+
+html, body{
+    height: 100%;
+    margin: 0;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    outline: solid 1px black;
+    /* 설정 */
+    position: relative;
+}
+
+.input-img-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 50%;
+    background-color: skyblue;
+    /* 상하좌우 정중앙 정렬하기 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.show-input-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: green;
+    /* 상하좌우 정중앙 정렬하기 */
+    position: relative;
+}
+
+.show-first-img {
+    width: 100%;
+    height: 100%;
+    background-color: yellow;
+    position: relative;
+}
+
+.show-second-img{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: relative;
+}
+
+#preview1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#preview2 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.set-input-img {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    /* 상하좌우 정중앙 정렬하기 */
+    position: relative;
+}
+
+.first-img {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    position: relative;
+}
+
+.second-img {
+    width: 100%;
+    height: 100%;
+    background-color: purple;
+    position: relative;
+}
