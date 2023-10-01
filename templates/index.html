@@ -20,24 +20,10 @@
         </div>
         <div class="set-input-img">
             <div class="first-img-bt">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="button">
-                        <label for="chooseFile">
-
-                        </label>
-                    </div>
-                    <input type="file" id="chooseFile" name="chooseFile" accept="image/jpeg" onchange="previewImg1(this);">
-                </form>
+                <button id="first-button" type="button" onclick="call_confirm1()">1번 사진 추가</button>
             </div>
             <div class="second-img-bt">
-                <form method="post" enctype="multipart/form-data">
-                    <div class="button">
-                        <label for="chooseFile">
-
-                        </label>
-                    </div>
-                    <input type="file" id="chooseFile" name="chooseFile" accept="image/jpeg" onchange="previewImg2(this);">
-                </form>
+                <button id="second-button" type="button" onclick="call_confirm2()">2번 사진 추가</button>
             </div>
         </div>
     </div>
