@@ -5,29 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static',filename='js/script.js') }}"> </script>
+    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
 </head>
 <body>
 <div class="wrap">
-    <div class="input-img-area">
-        <div class="show-input-img">
-            <div class="show-first-img">
-                <img id="preview1" />
+    <form method="post" enctype="multipart/form-data">
+        <div class="input-img-area">
+            <div class="show-input-img">
+                <div class="show-first-img">
+                    <img id="preview1"/>
+                </div>
+                <div class="show-second-img">
+                    <img id="preview2"/>
+                </div>
             </div>
-            <div class="show-second-img">
-                <img id="preview2" />
-            </div>
-        </div>
-        <div class="set-input-img">
-            <div class="first-img-bt">
-                <button id="first-button" type="button" onclick="call_confirm1()">1번 사진 추가</button>
-            </div>
-            <div class="second-img-bt">
-                <button id="second-button" type="button" onclick="call_confirm2()">2번 사진 추가</button>
-            </div>
-        </div>
-    </div>
+            <div class="set-input-img">
+                <div class="first-select-area">
+                    <div class="first-img-import-bt">
+                        <div class="button">
+                            <label for="chooseFile">
 
+                            </label>
+                        </div>
+                        <input type="file" id="image1" name="image1" accept="image/jpeg"
+                               onchange="previewImg1(this);">
+                    </div>
+                    <div class="first-img-webcam-bt">
+                        <input type="button" value="WebCam" onclick="takeWebcam1()"/>
+                    </div>
+                </div>
+                <div class="second-select-area">
+                    <div class="second-img-import-bt">
+                        <div class="button">
+                            <label for="chooseFile">
+
+                            </label>
+                        </div>
+                        <input type="file" id="image2" name="chooseFile" accept="image/jpeg"
+                               onchange="previewImg2(this);">
+                    </div>
+                    <div class="second-img-webcam-bt">
+                        <input type="button" value="WebCam" onclick="takeWebcam2()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 </body>
 </html>
