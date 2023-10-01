@@ -78,7 +78,7 @@ function captureImage1() {
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 
                 const img = document.getElementById('preview1');
-                img.src = canvas.toDataURL('image/jpeg', 0.8); // 이미지 포맷 및 품질 조절
+                img.src = canvas.toDataURL('image/png', 0.8); // 이미지 포맷 및 품질 조절
 
                 // 웹캠 스트림 종료
                 stream.getTracks().forEach(track => track.stop());
@@ -107,7 +107,7 @@ function captureImage2() {
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
 
                 const img = document.getElementById('preview2');
-                img.src = canvas.toDataURL('image/jpeg', 0.8); // 이미지 포맷 및 품질 조절
+                img.src = canvas.toDataURL('image/png', 0.8); // 이미지 포맷 및 품질 조절
 
                 // 웹캠 스트림 종료
                 stream.getTracks().forEach(track => track.stop());

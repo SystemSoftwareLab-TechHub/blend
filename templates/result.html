@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/resultstyle.css') }}">
+    <script src="{{ url_for('static',filename='js/resultscript.js') }}"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="input-section">
+        <div class="show-image1">
+{#            <img src="{{ url_for('static', filename=image1) }}" alt="Image 1">#}
+            <img src="{{ result_image1 }}" alt="Image 1">
+        </div>
+        <div class="decoration">
+
+        </div>
+        <div class="show-image2">
+            <img src="{{ image2 }}" alt="Uploaded Image 2">
+        </div>
+    </div>
+    <div class="result-section">
+        <div class="left-area">
+
+        </div>
+        <div class="center-area">
+
+        </div>
+        <div class="right-area">
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
