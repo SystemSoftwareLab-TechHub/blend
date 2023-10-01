@@ -49,11 +49,15 @@ def blend():
     # 이미지 처리 로직
 
     # 처리된 이미지를 BytesIO 형태로 변환하여 전달
-    result_image_stream = BytesIO()
-    result_image_stream.
+    # result_image_stream = BytesIO()
+    # result_image_stream.
 
     import base64
-    result_image_base64 = base64.b64encode(result_image_stream.getvalue()).decode('utf-8')
+    # result_image_base64 = base64.b64encode(result_image_stream.getvalue()).decode('utf-8')
+    result_image1_base64 = base64.b64encode(image1_stream.getvalue()).decode('utf-8')
+    result_image1_base64 = "data:image/png;base64,{}".format(result_image1_base64)
+    result_image2_base64 = base64.b64encode(image2_stream.getvalue()).decode('utf-8')
+    result_image2_base64 = "data:image/png;base64,{}".format(result_image2_base64)
 
     app.logger.info(image1.content_type)
     app.logger.info(image2.content_type)
@@ -61,7 +65,7 @@ def blend():
     # ai 로직 구현
 
     # return render_template('blend.html', image=image)
-    return render_template("result.html", result_image1 = result_image_base64)
+    return render_template("result.html", result_image1 = result_image1_base64, result_image2=result_image2_base64)
 
 
 if __name__ == '__main__':
