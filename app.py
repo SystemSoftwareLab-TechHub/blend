@@ -1,3 +1,5 @@
+from io import BytesIO
+from PIL import Image
 import qrcode
 import logging
 from flask import Flask, render_template, request
@@ -14,7 +16,7 @@ def generate_qrcode(data):
     :return: QR코드 이미지
     """
     qr = qrcode.QRCode(version=1, box_size=10, border=5)
-    qr.add_data(data)
+    qr.addata(data)
     qr.make(fit=True)
     img = qr.make_image(fill='black', back_color='white')
     return img
@@ -36,13 +38,35 @@ def blend():
     image1 = request.files['image1']
     image2 = request.files['image2']
 
+    # BytesIO 객체 생성
+    image1_stream = BytesIO(image1.read())
+    image2_stream = BytesIO(image2.read())
+
+    # 이미지를 열어서 처리
+    image1_pil = Image.open(image1_stream)
+    image2_pil = Image.open(image2_stream)
+
+    # 이미지 처리 로직
+
+    # 처리된 이미지를 BytesIO 형태로 변환하여 전달
+    # result_image_stream = BytesIO()
+    # result_image_stream.
+
+    import base64
+    # result_image_base64 = base64.b64encode(result_image_stream.getvalue()).decode('utf-8')
+    result_image1_base64 = base64.b64encode(image1_stream.getvalue()).decode('utf-8')
+    result_image1_base64 = "data:image/png;base64,{}".format(result_image1_base64)
+    result_image2_base64 = base64.b64encode(image2_stream.getvalue()).decode('utf-8')
+    result_image2_base64 = "data:image/png;base64,{}".format(result_image2_base64)
+
     app.logger.info(image1.content_type)
     app.logger.info(image2.content_type)
 
     # ai 로직 구현
 
     # return render_template('blend.html', image=image)
-    return "hello"
+    return render_template("result.html", result_image1 = result_image1_base64, result_image2=result_image2_base64)
+
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
