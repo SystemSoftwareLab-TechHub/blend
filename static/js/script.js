@@ -3,6 +3,7 @@ function previewImg1(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             document.getElementById('preview1').src = e.target.result;
+            document.getElementsByName('preview1')[0].value = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     } else {
@@ -15,6 +16,7 @@ function previewImg2(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             document.getElementById('preview2').src = e.target.result;
+            document.getElementsByName('preview2')[0].value = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
     } else {
@@ -122,20 +124,20 @@ function captureImage2() {
 }
 
 // 이미지 업로드 처리
-document.getElementById('preview2').addEventListener('click', function () {
-    document.getElementById('fileInput').click();
-});
+// document.getElementById('preview2').addEventListener('click', function () {
+//     document.getElementById('fileInput').click();
+// });
 
-document.getElementById('fileInput').addEventListener('change', function (event) {
-    const file = event.target.files[0];
-    if (file) {
-        const img = document.getElementById('preview2');
-        const reader = new FileReader();
-
-        reader.onload = function (e) {
-            img.src = e.target.result;
-        };
-
-        reader.readAsDataURL(file);
-    }
-});
+// document.getElementById('fileInput').addEventListener('change', function (event) {
+//     const file = event.target.files[0];
+//     if (file) {
+//         const img = document.getElementById('preview2');
+//         const reader = new FileReader();
+//
+//         reader.onload = function (e) {
+//             img.src = e.target.result;
+//         };
+//
+//         reader.readAsDataURL(file);
+//     }
+// });
