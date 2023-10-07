@@ -1,3 +1,5 @@
+from io import BytesIO
+from PIL import Image
 import qrcode
 import logging
 from flask import Flask, render_template, request, redirect
@@ -15,7 +17,7 @@ def generate_qrcode(data):
     :return: QR코드 이미지
     """
     qr = qrcode.QRCode(version=1, box_size=10, border=5)
-    qr.add_data(data)
+    qr.addata(data)
     qr.make(fit=True)
     img = qr.make_image(fill='black', back_color='white')
     return img
@@ -37,7 +39,6 @@ def test():
     # 이미지 2개 받아서 합성
     # ouput img
     # result html에 여러장의 사진을 보내야함(10장)
-
     return render_template('result.html', result_image1=img1, result_image2=img2)
 
 
