@@ -153,8 +153,6 @@ function captureImage2() {
 }
 
 // 웹캠 영상 활성화 모습
-
-
 // 이미지 업로드 처리
 // document.getElementById('preview2').addEventListener('click', function () {
 //     document.getElementById('fileInput').click();
