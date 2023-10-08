@@ -25,51 +25,76 @@ function previewImg2(input) {
 }
 
 function takeWebcam1() {
-    if (confirm("촬영하시려면 확인 버튼 클릭")) {
-        captureImage1();
-    } else {
-        var input = document.getElementsByName("image1");
-        // var input = document.createElement("input");
-        // input.type = "file";
-        // input.accept = "image/jpeg"; // 이미지 확장자를 jpeg로 설정
-        //
-        // input.style.display = "none";
-        input.addEventListener("change", function () {
-            var selectedFile = input.files[0];
-            if (selectedFile) {
-                previewImg1(input)
-            }
+    const displayArea = document.querySelector('.display-area');
+    displayArea.style.display = 'block';
+    const video = document.getElementById('video');
+
+    navigator.mediaDevices.getUserMedia({video: true})
+        .then(function (stream) {
+            video.srcObject = stream;
+            video.play();
+        })
+        .catch(function (error) {
+            console.error('웹캠에 액세스할 수 없습니다:', error);
         });
-        input.click();
-    }
+
+    // display가 먼저 나타난 후 confirm 창이 뜨게끔(실제 작동 시 display와 confirm이 같이 보여진다고 생각하면 편함)
+    setTimeout(function () {
+        if (confirm("촬영하시려면 확인 버튼 클릭")) {
+            captureImage1();
+        } else {
+            var input = document.getElementsByName("image1")[0];
+            input.addEventListener("change", function () {
+                var selectedFile = input.files[0];
+                if (selectedFile) {
+                    previewImg1(input);
+                }
+            });
+            input.click();
+        }
+    }, 100); // 100 밀리초(0.1초) 후에 confirm 대화 상자를 표시
 }
 
 function takeWebcam2() {
-    if (confirm("촬영하시려면 확인 버튼 클릭")) {
-        captureImage2();
-    } else {
-        var input = document.getElementsByName("image2");
-        // var input = document.createElement("input");
-        // input.type = "file";
-        // input.accept = "image/jpeg"; // 이미지 확장자를 jpeg로 설정
-        //
-        // input.style.display = "none";
-        input.addEventListener("change", function () {
-            var selectedFile = input.files[0];
-            if (selectedFile) {
-                previewImg2(input)
-            }
+    const displayArea = document.querySelector('.display-area');
+    displayArea.style.display = 'block';
+    const video = document.getElementById('video');
+
+    navigator.mediaDevices.getUserMedia({video: true})
+        .then(function (stream) {
+            video.srcObject = stream;
+            video.play();
+        })
+        .catch(function (error) {
+            console.error('웹캠에 액세스할 수 없습니다:', error);
         });
-        input.click();
-    }
+
+    // display가 먼저 나타난 후 confirm 창이 뜨게끔(실제 작동 시 display와 confirm이 같이 보여진다고 생각하면 편함)
+    setTimeout(function () {
+        if (confirm("촬영하시려면 확인 버튼 클릭")) {
+            captureImage2();
+        } else {
+            var input = document.getElementsByName("image2")[0];
+            input.addEventListener("change", function () {
+                var selectedFile = input.files[0];
+                if (selectedFile) {
+                    previewImg1(input);
+                }
+            });
+            input.click();
+        }
+    }, 100); // 100 밀리초(0.1초) 후에 confirm 대화 상자를 표시
 }
+
 
 // 웹캠으로 사진 촬영
 function captureImage1() {
+    const displayArea = document.querySelector('.display-area');
     navigator.mediaDevices.getUserMedia({video: true})
         .then(function (stream) {
             const video = document.createElement('video');
-            document.body.appendChild(video);
+            // 해당 코드가 웹캠 사진 찍은 후 페이지에 video에 보이는 화면을 남기는 원인(일단 추측)
+            // document.body.appendChild(video);
             video.srcObject = stream;
             video.play();
 
@@ -87,6 +112,7 @@ function captureImage1() {
 
                 // 촬영 완료 메시지 표시
                 alert('촬영 완료 XD');
+                displayArea.style.display = 'none';
             });
         })
         .catch(function (error) {
@@ -95,10 +121,12 @@ function captureImage1() {
 }
 
 function captureImage2() {
+    const displayArea = document.querySelector('.display-area');
     navigator.mediaDevices.getUserMedia({video: true})
         .then(function (stream) {
             const video = document.createElement('video');
-            document.body.appendChild(video);
+            // 해당 코드가 웹캠 사진 찍은 후 페이지에 video에 보이는 화면을 남기는 원인(일단 추측)
+            // document.body.appendChild(video);
             video.srcObject = stream;
             video.play();
 
@@ -116,6 +144,7 @@ function captureImage2() {
 
                 // 촬영 완료 메시지 표시
                 alert('촬영 완료 XD');
+                displayArea.style.display = 'none';
             });
         })
         .catch(function (error) {
@@ -123,6 +152,7 @@ function captureImage2() {
         });
 }
 
+// 웹캠 영상 활성화 모습
 // 이미지 업로드 처리
 // document.getElementById('preview2').addEventListener('click', function () {
 //     document.getElementById('fileInput').click();
