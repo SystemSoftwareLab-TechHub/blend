@@ -1,8 +1,6 @@
-from io import BytesIO
-from PIL import Image
 import qrcode
 import logging
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from flask_cors import CORS
 
 app = Flask(__name__)
