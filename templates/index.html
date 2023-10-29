@@ -5,14 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
 </head>
 <body>
-{#<div class="wrap">#}
-<form action="/test" method="post" enctype="multipart/form-data">
+<canvas id="canvas1"></canvas>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+<div class="wrap">
+    <div class="heart-area">
+        <div class="heart" ></div>
+    </div>
+<form enctype="multipart/form-data">
     {#<form enctype="multipart/form-data">#}
     <input type="hidden" name="preview1" value="">
     <input type="hidden" name="preview2" value="">
+
     <div class="input-img-area">
         <div class="show-input-img">
             <div class="show-first-img">
@@ -24,15 +30,16 @@
         </div>
         <div class="set-input-img">
             <div class="first-select-area">
-                <div class="first-img-import-bt">
-                    <div class="button">
-                        <label for="chooseFile">
+{#                <div class="first-img-import-bt">#}
+{#                        <div class="button">#}
+{#                            <label for="image1">#}
+{#                                <div class="btn-upload">파일 업로드하기</div>#}
+{#                            </label>#}
+{#                        </div>#}
+{#                        <input type="file" id="image1" name="image1" accept="image/png"#}
+{#                               onchange="previewImg1(this);">#}
+{#                    </div>#}
 
-                        </label>
-                    </div>
-                    <input type="file" id="image1" accept="image/png"
-                           onchange="previewImg1(this);">
-                </div>
                 <div class="first-img-webcam-bt">
                     <input type="button" value="WebCam" onclick="takeWebcam1()"/>
                 </div>
@@ -52,11 +59,17 @@
                 </div>
             </div>
         </div>
+        <div class="save-img-btn-area">
+            <button id="downloadButton1" onclick="downloadImages()">사진 다운로드</button>
+        </div>
     </div>
     <div class="display-area">
-        <video autoplay id="video"></video>
+        <div class="align-area">
+            <video autoplay id="video"></video>
+        </div>
+
     </div>
-    <input type="submit" value="blend">
+{#    <input type="submit" value="blend">#}
     <script>
         {#function getBase64Image(img) {#}
         {#    var canvas = document.createElement("canvas");#}
@@ -67,25 +80,40 @@
         {#    var dataURL = canvas.toDataURL("image/png");#}
         {#    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");#}
         {# } #}
-        function blend() {
-            var img1 = document.getElementById("preview1");
-            var img2 = document.getElementById("preview2");
-            var data = {
+
+{##}
+{#        function blend() {#}
+{#            var img1 = document.getElementById("preview1");#}
+{#            var img2 = document.getElementById("preview2");#}
+{#            var data = {#}
                 {#"img1": getBase64Image(img1),#}
                 {#"img2": getBase64Image(img2)#}
-
-                "img1": img1.src,
-                "img2": img2.src
-            };
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "/test", true);
-            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-            xhr.send(JSON.stringify(data));
+{##}
+{#                "img1": img1.src,#}
+{#                "img2": img2.src#}
+{#            };#}
+{##}
+{#            var xhr = new XMLHttpRequest();#}
+{#            xhr.open("POST", "/test", true);#}
+{#            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");#}
+{#            xhr.send(JSON.stringify(data));#}
         }
+        {##}
+        {#document.addEventListener('mousemove', function (e){#}
+        {#    let body = document.querySelector('body');#}
+        {#    let heart = document.createElement('span');#}
+        {#    let x = e.offsetX;#}
+        {#    let y = e.offsetY;#}
+        {#    heart.style.left = x+'px';#}
+        {#    heart.style.top = y+'px';#}
+        {##}
+        {#    body.appendChild(heart);#}
+        {##}
+        {#    setTimeout(function (){#}
+        {#        heart.remove();#}
+        {#    })#}
     </script>
 </form>
 </div>
-
 </body>
 </html>

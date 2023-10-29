@@ -20,9 +20,9 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 50%;
-    height: 50%;
-    background-color: skyblue;
+    width: 42%;
+    height: 52%;
+    /*background-color: skyblue;*/
     position: absolute;
     top: 50%;
     left: 50%;
@@ -71,8 +71,23 @@ html, body{
     justify-content: space-around;
     flex-direction: row;
     width: 100%;
-    height: 100%;
-    background-color: blue;
+    height: 30%;
+    /*background-color: blue;*/
+    position: relative;
+}
+
+.save-img-btn-area {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    height: 60%;
+    position: relative;
+}
+
+#downloadButton1 {
+    width: 50%;
+    height: 30%;
     position: relative;
 }
 
@@ -119,17 +134,109 @@ html, body{
 .display-area {
     position: absolute;
     margin: 0px auto;
-    width: 500px;
-    height: 375px;
+    width: 550px;
+    height: 550px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 10px #333 solid;
+    /* background-color: skyblue; */
+    /*나중에 Frame 이미지 이곳에 url 주소만 바꿔주면 ok*/
+    border-image-source:url("https://i.ibb.co/dfX2tGp/heartframe1.png");
+    border-image-width: 550px;
+    /* border: 10px #123123 solid; */
     display: none; /* 처음에는 숨겨진 상태로 */
 }
 
-#video {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
+.align-area {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#video {
+    justify-content: center;
+    width: 470px;
+    height: 470px;
+    background-color: #666;
+    /* webcam video 좌우 반전 css 코드*/
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+#background-canvas {
+    width: 1280px;
+    height: 720px;
+    display: block;
+    margin: 0;
+}
+
+#canvas1 {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  background: lightpink;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.heart {
+    width: 500px;
+    height: 500px;
+    background: #ea2027;
+    position: relative;
+    transform: rotate(45deg);
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    border-radius: 50%;
+    background: #ea2027;
+  }
+  .heart::before {
+    left: -50%;
+  }
+  .heart::after {
+    top: -50%;
+  }
+
+  .wrap {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .heart-area {
+      margin-top: 8%;
+  }
+
+  /*span {*/
+  /*    position: absolute;*/
+  /*    pointer-events: none;*/
+  /*}*/
+
+  /*span::before{*/
+  /*    content: '';*/
+  /*    position: absolute;*/
+  /*    width: 100px;*/
+  /*    height: 100px;*/
+  /*    background: url(heart.png);*/
+  /*    background-size: cover;*/
+  /*    );*/
+  /*}*/
