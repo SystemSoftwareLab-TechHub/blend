@@ -9,6 +9,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 CORS(app)
 
+
 def generate_qrcode(data):
     """
     QR코드를 생성하는 함수
@@ -33,9 +34,11 @@ def test():
     img1 = request.form.get('preview1')
     img2 = request.form.get('preview2')
 
-    app.logger.info("테스트 중 입니다")
 
+    app.logger.info("테스트 중 입니다")
     # return render_template('result.html', result_image1=img1, result_image2=img2)
 
 if __name__ == '__main__':
+
     app.run(debug=True, port=80)
+

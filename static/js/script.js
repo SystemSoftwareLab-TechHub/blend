@@ -155,6 +155,7 @@ function captureImage2() {
         });
 }
 
+
 // 배경 하트 matrix rain 애니메이션 구현
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d");
@@ -263,3 +264,4 @@ function downloadImage(dataURL, filename) {
             a.click();
             document.body.removeChild(a);
         }
+
