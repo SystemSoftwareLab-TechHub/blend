@@ -243,25 +243,47 @@ requestAnimationFrame(animate);
 
 
 // webcam으로 찍은 이미지 저장
+// function downloadImages() {
+//     // 두 개의 이미지 데이터 URL 및 파일 이름 가져오기
+//     const dataURL1 = document.getElementById('preview1').src;
+//     const filename1 = 'webcam_image_1.png';
+//
+//     const dataURL2 = document.getElementById('preview2').src;
+//     const filename2 = 'webcam_image_2.png';
+//
+//     // 이미지 다운로드 함수 호출
+//     downloadImage(dataURL1, filename1);
+//     downloadImage(dataURL2, filename2);
+//
+// }
+
 function downloadImages() {
-    // 두 개의 이미지 데이터 URL 및 파일 이름 가져오기
     const dataURL1 = document.getElementById('preview1').src;
-    const filename1 = 'webcam_image_1.png';
-
     const dataURL2 = document.getElementById('preview2').src;
-    const filename2 = 'webcam_image_2.png';
 
-    // 이미지 다운로드 함수 호출
-    downloadImage(dataURL1, filename1);
-    downloadImage(dataURL2, filename2);
+    let formData = new FormData();
+    formData.append('preview1', dataURL1);
+    formData.append('preview2', dataURL2);
+
+    fetch('/download_images', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.text())
+        .then(result => {
+            console.log(result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 function downloadImage(dataURL, filename) {
-            const a = document.createElement('a');
-            a.href = dataURL;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
+    const a = document.createElement('a');
+    a.href = dataURL;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 
